@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class BubbleSort {
-    public static void bubble_sort(int[] arr, int n) {
+    public static int bubble_sort(int[] arr, int n) {
+        int swaps = 0;
         for (int i = 0; i < n - 1; i++) {
             boolean swapped = false;
             for (int j = 0; j < n - i - 1; j++) {
@@ -10,15 +11,17 @@ public class BubbleSort {
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                     swapped = true;
+                    swaps++;
                 }
             }
             if(!swapped)
-                return;
+                return swaps;
         }
+        return swaps;
     }
 
     public static void main(String[] args) {
-        int n;
+        int n, swaps = 0;
         Scanner input = new Scanner(System.in);
         System.out.println("Enter number of elements: ");
         n = input.nextInt();
@@ -26,9 +29,11 @@ public class BubbleSort {
         System.out.println("Enter elements in array: ");
         for (int i = 0; i < n; i++)
             arr[i] = input.nextInt();
-        bubble_sort(arr, n);
+        swaps = bubble_sort(arr, n);
+        System.out.println("Sorted array: ");
         for (int i = 0; i < n; i++)
             System.out.print(arr[i] + " ");
+        System.out.println("\nNumber of swaps: " + swaps);
         input.close();
     }
 }
