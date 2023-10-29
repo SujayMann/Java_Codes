@@ -1,38 +1,27 @@
 import java.util.Scanner;
-
 class Node {
     int data;
-    Node prev;
-    Node next;
-
+    Node prev, next;
     public Node(int data) {
         this.data = data;
-        this.prev = null;
-        this.next = null;
+        this.prev = this.next = null;
     }
 }
-
 class DoublyLinkedList {
-    Node head;
-    Node tail;
-
+    Node head, tail;
     public DoublyLinkedList() {
-        head = null;
-        tail = null;
+        head = tail = null;
     }
-
     void insert(int data) {
         Node temp = new Node(data);
         if (head == null) {
-            head = temp;
-            tail = temp;
+            head = tail = temp;
         } else {
             tail.next = temp;
             temp.prev = tail;
             tail = temp;
         }
     }
-
     Boolean delete(int val) {
         Boolean del = false;
         Node temp = head;
@@ -56,7 +45,6 @@ class DoublyLinkedList {
         }
         return del;
     }
-
     void traverse(Node head) {
         while (head != null) {
             System.out.print(head.data + " ");
@@ -65,10 +53,9 @@ class DoublyLinkedList {
         System.out.println();
     }
 }
-
 public class Double_Linked_List_Deletion {
     public static void main(String[] args) {
-        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        DoublyLinkedList dLL = new DoublyLinkedList();
         Scanner input = new Scanner(System.in);
         System.out.print("Enter number of nodes in list: ");
         int n = input.nextInt();
@@ -79,17 +66,17 @@ public class Double_Linked_List_Deletion {
         System.out.println("Enter values in list:");
         for (int i = 0; i < n; i++) {
             int a = input.nextInt();
-            doublyLinkedList.insert(a);
+            dLL.insert(a);
         }
         System.out.println("Doubly Linked List formed:");
-        doublyLinkedList.traverse(doublyLinkedList.head);
+        dLL.traverse(dLL.head);
         System.out.print("Enter a value to delete: ");
         int x = input.nextInt();
-        Boolean del = doublyLinkedList.delete(x);
+        Boolean del = dLL.delete(x);
         if (del) {
-            System.out.println("After deletion:");
-            if (doublyLinkedList.head != null)
-                doublyLinkedList.traverse(doublyLinkedList.head);
+            System.out.println("List after deletion:");
+            if (dLL.head != null)
+                dLL.traverse(dLL.head);
             else
                 System.out.println("List Empty");
         } else
