@@ -25,13 +25,13 @@ class DoublyLinkedList {
     Boolean delete(int val) {
         Boolean del = false;
         Node temp = head;
-        if (head == tail) {
-            head = tail = null;
-            return true;
-        }
         while (temp != null) {
             if (temp.data == val) {
                 del = true;
+                if (head == tail) {
+                    head = tail = null;
+                    return del;
+                }
                 if(temp == head)
                     head = head.next;
                 else if(temp == tail)
