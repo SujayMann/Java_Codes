@@ -60,19 +60,16 @@ public class Double_Linked_List_Deletion {
         System.out.print("Enter number of nodes in list: ");
         int n = input.nextInt();
         while (n <= 0) {
-            System.out.println("Enter 1 or more number of nodes");
+            System.out.println("Enter value greater than 0");
             n = input.nextInt();
         }
         System.out.println("Enter values in list:");
-        for (int i = 0; i < n; i++) {
-            int a = input.nextInt();
-            dLL.insert(a);
-        }
+        for (int i = 0; i < n; i++)
+            dLL.insert(input.nextInt());
         System.out.println("Doubly Linked List formed:");
         dLL.traverse(dLL.head);
         System.out.print("Enter a value to delete: ");
-        int x = input.nextInt();
-        Boolean del = dLL.delete(x);
+        Boolean del = dLL.delete(input.nextInt());
         if (del) {
             System.out.println("List after deletion:");
             if (dLL.head != null)
